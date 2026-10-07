@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#dff7e8">
+  <meta name="description" content="Offline-first, source-faithful Psychiatry Mnemonic Reviewer.">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="style.css">
+  <title>Psychiatry Mnemonic Reviewer</title>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand" data-action="home">
+        <img src="assets/icon.svg" alt="Question block app icon" class="brand-icon">
+        <div><strong>Psychiatry<br>Mnemonic Reviewer</strong><small>Small blocks. Big recall.</small></div>
+      </div>
+      <nav class="nav" aria-label="Main navigation">
+        <button class="nav-item active" data-action="home">⌂ <span>Home</span></button>
+        <button class="nav-item" data-action="browse">▤ <span>Browse All</span></button>
+        <div class="nav-label">SOURCE PAGES</div>
+        <div id="pageNav"></div>
+        <div class="nav-divider"></div>
+        <button class="nav-item" data-action="flashcards" data-flash-action="due">▣ <span>Flashcards</span></button>
+        <button class="nav-item" data-action="quiz">✦ <span>Quiz</span></button>
+        <button class="nav-item" data-action="study">▤ <span>Study Sheets<br><small>Educator</small></span></button>
+        <button class="nav-item" data-action="review">▥ <span>Progress / Review</span></button>
+        <button class="nav-item" data-action="about">ⓘ <span>About</span></button>
+      </nav>
+      <div class="sidebar-note">🌱<br><strong>Source-faithful</strong><br>transcription<br><small>Offline-ready</small></div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobileMenu" aria-label="Open menu">☰</button>
+        <div class="search-wrap">
+          <span>⌕</span><input id="globalSearch" type="search" placeholder="Search anything in the app…" autocomplete="off">
+          <kbd>⌘ K</kbd>
+        </div>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode"><span>☀</span><i></i><span>☾</span></button>
+        <button class="icon-button" data-action="about" aria-label="About">⚙</button>
+        <span class="version">v1.13.0 • Pass 13</span>
+      </header>
+      <div id="app" tabindex="-1"></div>
+    </main>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+<div id="offline-status" class="offline-status" role="status" aria-live="polite" hidden>Offline mode — your study data is saved on this device.</div>
+</body>
+</html>
