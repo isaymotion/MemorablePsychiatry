@@ -1,5 +1,5 @@
-const CACHE = 'pmr-pass16-v1';
-const CORE = ['./','./index.html','./style.css','./app.js','./data.js','./data.json','./manifest.json','./assets/icon.svg','./assets/icon-192.png','./assets/icon-512.png','./assets/apple-touch-icon.png'];
+const CACHE = 'pmr-pass17-v1';
+const CORE = ['./','./index.html','./style.css','./app.js','./data.js','./data.json','./manifest.json','./assets/icon.svg','./assets/icon-192.png','./assets/icon-512.png','./assets/icon-192-maskable.png','./assets/icon-512-maskable.png','./assets/apple-touch-icon.png'];
 
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(CORE)).then(() => self.skipWaiting()));

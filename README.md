@@ -158,3 +158,13 @@ The remaining deployment-specific check is to open the GitHub Pages site over HT
 - The mnemonic heading and source expansion are revealed on the answer side.
 - This fixes the Dopaminergic pathway cards (Mesolimbic, Tuberoinfundibular, Nigrostriatal) and the same structural issue across the rest of the deck.
 - Source data remains unchanged; no clinical fact-checking or rewriting was performed.
+
+
+## Pass 17 — iOS / Safari PWA icon geometry repair
+
+- Rebuilt the approved brain + open-book artwork as a true full-bleed square app icon.
+- Removed the accidental white canvas and black/transparent export area that caused the iOS/Safari saved-app icon to appear offset with a white block and black edge.
+- Added separate `any` and `maskable` PWA icon variants so platform masking does not reuse the wrong geometry.
+- Updated Apple touch icon and favicon assets to the same corrected artwork.
+- Kept the home-screen/hero artwork aligned with the corrected icon assets.
+- Bumped service-worker cache to `pmr-pass17-v1`.
