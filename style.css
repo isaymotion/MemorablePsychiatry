@@ -32,7 +32,7 @@ button,input,select{font:inherit} button{cursor:pointer} body{background-image:r
 /* Pass 6 — Version 2 pixel-art visual system */
 :root{--pixel-shadow:4px 4px 0 rgba(23,59,54,.18);--pixel-border:#315b50}
 body{image-rendering:auto}
-.brand-icon,.hero-pixel,.page-card .icon,.quick .emoji,.complete-icon{image-rendering:pixelated}
+.hero-pixel,.page-card .icon,.quick .emoji,.complete-icon{image-rendering:pixelated}
 .nav-item,.btn,.field,.icon-button,.mobile-menu,.theme-toggle,.version,.page-card,.quick,.stat,.panel,.result,.detail-card,.quiz-option,.check-card{border-radius:4px;box-shadow:3px 3px 0 rgba(23,59,54,.10)}
 .nav-item.active,.btn{box-shadow:3px 3px 0 #075f43}
 .hero{border-radius:6px;box-shadow:6px 6px 0 rgba(49,148,232,.14);border-width:2px}
@@ -108,3 +108,62 @@ button,.btn,.rate,.reveal{min-height:44px}
 @media(max-width:760px){.app-shell{min-height:100dvh}.sidebar{height:100dvh;height:100svh}.topbar{position:sticky}.flashcard{min-height:min(68dvh,520px)}.flash-front{padding:26px 10px}.flash-front h1{overflow-wrap:anywhere}.quiz-card{padding:22px 16px}.quiz-card h1{font-size:22px;overflow-wrap:anywhere}.quiz-option{min-height:48px}.heart-btn{min-width:44px;min-height:44px}.flash-nav .btn{min-height:44px}}
 @media(max-width:430px){.topbar{gap:8px}.search-wrap{min-width:0}.search-wrap input{font-size:16px}.theme-toggle{padding:7px 8px}.flashcard{border-radius:20px}.flash-front h1{font-size:27px}.flash-answer{font-size:16px}.quiz-start-grid{grid-template-columns:1fr}.quiz-stats{grid-template-columns:1fr 1fr 1fr;gap:7px}.quiz-stats>div{padding:11px 5px}.quiz-stats b{font-size:21px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}}
+
+/* Pass 14 — approved brain + open-book app identity */
+.brand-icon{width:58px;height:58px;image-rendering:auto;border-radius:14px;box-shadow:0 5px 14px rgba(24,92,83,.16);flex:none}
+.hero-app-icon{width:116px;height:116px;object-fit:cover;border-radius:24px;box-shadow:0 10px 24px rgba(24,92,83,.20);flex:none}
+@media(max-width:900px){.hero-app-icon{width:92px;height:92px;border-radius:20px}}
+@media(max-width:600px){.hero-app-icon{width:72px;height:72px;border-radius:16px}.hero{gap:12px}.hero-app-icon{display:block}}
+
+/* Pass 15 — dark-mode contrast repair
+   Keep the spring palette, but replace light-only surfaces with dark-safe equivalents. */
+[data-theme="dark"] .progress-hero{
+  background:linear-gradient(135deg,#19352e,#302634 55%,#1f3040);
+}
+[data-theme="dark"] .progress-hero h2,
+[data-theme="dark"] .progress-hero p{color:var(--text)}
+[data-theme="dark"] .progress-hero .eyebrow{color:var(--green)}
+[data-theme="dark"] .progress-ring{
+  background:#13211f;
+  border-color:#4bbf91;
+  box-shadow:inset 0 0 0 5px #203b33;
+}
+[data-theme="dark"] .review-card.green{background:#19372d;color:var(--text)}
+[data-theme="dark"] .review-card.pink{background:#382333;color:var(--text)}
+[data-theme="dark"] .review-card.orange{background:#3b3320;color:var(--text)}
+[data-theme="dark"] .review-card.blue{background:#203346;color:var(--text)}
+[data-theme="dark"] .review-card.heart{background:#382333;color:var(--text)}
+[data-theme="dark"] .review-card span{color:#c4ddd5}
+[data-theme="dark"] .heart-action{color:#ffd0e7;background:#5a2946;border-color:#c86a9b}
+[data-theme="dark"] .text-btn{color:#ff9fca}
+[data-theme="dark"] .quiz-start.pink{background:#382333;color:var(--text)}
+[data-theme="dark"] .quiz-start.yellow{background:#3b3320;color:var(--text)}
+[data-theme="dark"] .quiz-start.blue{background:#203346;color:var(--text)}
+[data-theme="dark"] .quiz-start.green{background:#19372d;color:var(--text)}
+[data-theme="dark"] .quick-green{background:linear-gradient(135deg,#19372d,#214537);color:var(--text)}
+[data-theme="dark"] .quick-pink{background:linear-gradient(135deg,#382333,#4a2940);color:var(--text)}
+[data-theme="dark"] .quick-blue{background:linear-gradient(135deg,#203346,#29425b);color:var(--text)}
+[data-theme="dark"] .quick-yellow{background:linear-gradient(135deg,#3b3320,#4a3e24);color:var(--text)}
+[data-theme="dark"] .stat-pink{background:linear-gradient(135deg,var(--surface),#382333)}
+[data-theme="dark"] .stat-yellow{background:linear-gradient(135deg,var(--surface),#3b3320)}
+[data-theme="dark"] .stat-green{background:linear-gradient(135deg,var(--surface),#19372d)}
+[data-theme="dark"] .stat-blue{background:linear-gradient(135deg,var(--surface),#203346)}
+[data-theme="dark"] .status-new{background:#20372b;color:var(--text)}
+[data-theme="dark"] .status-due{background:#4a2940;color:#ffd0e7}
+[data-theme="dark"] .status-learning{background:#42381f;color:#ffe3a0}
+[data-theme="dark"] .status-mastered{background:#193b30;color:#9ce6c5}
+[data-theme="dark"] .rate.hard{color:#ffb5d7;background:#4a2940}
+[data-theme="dark"] .rate.medium{color:#ffe08a;background:#42381f}
+[data-theme="dark"] .rate.easy{color:#a8f0cc;background:#193b30}
+[data-theme="dark"] .heart-btn.hearted{color:#ff9fca;background:#4a2940;border-color:#c86a9b}
+[data-theme="dark"] .quick-heart{background:#382333;border-color:#a65380}
+[data-theme="dark"] .quiz-label{background:#33284b;color:#d8c8ff}
+[data-theme="dark"] .pill.page1{background:#4a2940;color:#ffd0e7}
+[data-theme="dark"] .pill.page2{background:#42381f;color:#ffe3a0}
+[data-theme="dark"] .pill.page3{background:#193b30;color:#a8f0cc}
+[data-theme="dark"] .pill.page4{background:#203b52;color:#b9dcff}
+[data-theme="dark"] .pill.page5{background:#33284b;color:#d8c8ff}
+[data-theme="dark"] .hero{background:linear-gradient(100deg,#1f3b45,#214036 48%,#3b2938)}
+[data-theme="dark"] .hero p{color:#c6e7dd}
+.flash-prompt{margin:.6rem 0 0;color:var(--muted);font-size:1rem}
+.flash-answer h2{margin:.25rem 0 .75rem}

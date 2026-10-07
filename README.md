@@ -137,3 +137,24 @@ The final-QA JavaScript referenced `buildDeck()` from `startFlash()` but did not
 
 ## Final real-device validation
 The remaining deployment-specific check is to open the GitHub Pages site over HTTPS, allow the service worker to finish installing, then disable network and reload. This confirms the real hosting origin, browser cache, and offline navigation behavior together.
+
+## Pass 14 — Approved App Icon & Home Identity
+- Replaced the previous pixel question-block icon with the approved brain + open-book artwork.
+- Updated favicon, Apple touch icon, PWA 192/512 icons, sidebar brand icon, and Home hero icon.
+- Home screen now visibly uses the same approved app identity as the installed app icon.
+- No source mnemonic/database content was changed.
+- Service-worker cache bumped to `pmr-pass14`.
+
+## Pass 16 — Dark Mode Contrast Repair
+- Repaired dark-mode contrast on the Progress & Review screen, including the study-journey hero, progress ring, review cards, and Hearted card.
+- Replaced light-only pastel backgrounds with dark-safe spring-palette surfaces while retaining the app's visual identity.
+- Added dark-safe colors for quiz cards, quick-start cards, status pills, rating controls, page pills, and other shared pastel components.
+- Improved dark-mode contrast for the main hero and supporting text.
+- Source database remains unchanged at 241 entries.
+- Service-worker cache bumped to `pmr-pass15-v1`.
+
+## Pass 16 — Flashcard recall-side correction
+- The flashcard front now shows only the source entry/prompt.
+- The mnemonic heading and source expansion are revealed on the answer side.
+- This fixes the Dopaminergic pathway cards (Mesolimbic, Tuberoinfundibular, Nigrostriatal) and the same structural issue across the rest of the deck.
+- Source data remains unchanged; no clinical fact-checking or rewriting was performed.
