@@ -1,4 +1,4 @@
-const CACHE = 'pmr-pass17-v1';
+const CACHE = 'pmr-pass18-v1';
 const CORE = ['./','./index.html','./style.css','./app.js','./data.js','./data.json','./manifest.json','./assets/icon.svg','./assets/icon-192.png','./assets/icon-512.png','./assets/icon-192-maskable.png','./assets/icon-512-maskable.png','./assets/apple-touch-icon.png'];
 
 self.addEventListener('install', event => {

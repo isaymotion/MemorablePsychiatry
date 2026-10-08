@@ -160,7 +160,7 @@ The remaining deployment-specific check is to open the GitHub Pages site over HT
 - Source data remains unchanged; no clinical fact-checking or rewriting was performed.
 
 
-## Pass 17 — iOS / Safari PWA icon geometry repair
+## Pass 18 — iOS / Safari PWA icon geometry repair
 
 - Rebuilt the approved brain + open-book artwork as a true full-bleed square app icon.
 - Removed the accidental white canvas and black/transparent export area that caused the iOS/Safari saved-app icon to appear offset with a white block and black edge.
@@ -168,3 +168,9 @@ The remaining deployment-specific check is to open the GitHub Pages site over HT
 - Updated Apple touch icon and favicon assets to the same corrected artwork.
 - Kept the home-screen/hero artwork aligned with the corrected icon assets.
 - Bumped service-worker cache to `pmr-pass17-v1`.
+
+
+### Pass 18 — Educator printing hardening
+- Replaced popup-based `Print / Save as PDF` with same-document printing for Safari/iOS reliability.
+- Added print-only stylesheet that hides app chrome and prints the rendered two-column study sheet.
+- Service-worker cache bumped to `pmr-pass18-v1`.

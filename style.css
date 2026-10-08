@@ -167,3 +167,66 @@ button,.btn,.rate,.reveal{min-height:44px}
 [data-theme="dark"] .hero p{color:#c6e7dd}
 .flash-prompt{margin:.6rem 0 0;color:var(--muted);font-size:1rem}
 .flash-answer h2{margin:.25rem 0 .75rem}
+
+
+/* Pass 18 — Safari/iOS-safe educator printing. Print the existing study sheet
+   in the current document instead of relying on a popup print window. */
+@media print {
+  html.printing-study-sheet body {
+    background:#fff !important;
+    color:#173b36 !important;
+  }
+  html.printing-study-sheet .sidebar,
+  html.printing-study-sheet .topbar,
+  html.printing-study-sheet .study-controls,
+  html.printing-study-sheet .preview-head,
+  html.printing-study-sheet .detail-head,
+  html.printing-study-sheet .footer,
+  html.printing-study-sheet .toast {
+    display:none !important;
+  }
+  html.printing-study-sheet .main,
+  html.printing-study-sheet #app {
+    width:100% !important;
+    max-width:none !important;
+    margin:0 !important;
+    padding:0 !important;
+    overflow:visible !important;
+  }
+  html.printing-study-sheet .study-layout {
+    display:block !important;
+    margin:0 !important;
+  }
+  html.printing-study-sheet .study-preview {
+    display:block !important;
+    margin:0 !important;
+    padding:0 !important;
+    border:0 !important;
+    box-shadow:none !important;
+    background:#fff !important;
+  }
+  html.printing-study-sheet .print-sheet {
+    display:block !important;
+    width:100% !important;
+    margin:0 !important;
+    padding:0 !important;
+    border:0 !important;
+    border-radius:0 !important;
+    box-shadow:none !important;
+    background:#fff !important;
+  }
+  html.printing-study-sheet .sheet-columns {
+    display:grid !important;
+    grid-template-columns:1fr 1fr !important;
+    gap:8px !important;
+  }
+  html.printing-study-sheet .sheet-row {
+    break-inside:avoid !important;
+    page-break-inside:avoid !important;
+  }
+}
+@media print and (max-width:650px) {
+  html.printing-study-sheet .sheet-columns {
+    grid-template-columns:1fr 1fr !important;
+  }
+}

@@ -141,15 +141,18 @@
     document.getElementById('includeVersion').addEventListener('change',e=>{state.study.includeVersion=e.target.checked;studySheets()});
   }
   function printStudySheets(){
-    const selected=[...state.study.pages].sort((a,b)=>+a-+b);
-    const base=MNEMONICS.filter(x=>selected.includes(String(x.sourcePage)) && (!state.study.category||x.category===state.study.category));
-    if(!base.length){showToast('Select at least one source page.');return}
-    const rows=base.map(x=>`<article class="row"><div class="term"><strong>${esc(x.entry)}</strong><span>Page ${x.sourcePage} • ${esc(x.category)}</span></div><div class="source"><strong>${esc(x.heading)}</strong>${x.expansion?`<div>${esc(x.expansion)}</div>`:''}${state.study.includeAudit?`<small>Audit: ${esc(x.auditStatus)}</small>`:''}</div></article>`).join('');
-    const meta=[state.study.includeAttribution?'App created by Isabella Navarro, MD.':'',state.study.includeVersion?'Latest version October 2026.':'',state.study.includeAudit?'Source/audit notes included.':'','Source-faithful transcription'].filter(Boolean).join(' ');
-    const w=window.open('','_blank','noopener,noreferrer');
-    if(!w){showToast('Allow pop-ups to print the study sheet.');return}
-    w.document.write(`<!doctype html><html><head><meta charset="utf-8"><title>Psychiatry Mnemonic Reviewer — Study Sheet</title><style>@page{size:auto;margin:12mm}*{box-sizing:border-box}body{font-family:Arial,Helvetica,sans-serif;color:#172f2b;margin:0;font-size:10px;line-height:1.35}.header{border-bottom:2px solid #168f67;padding-bottom:8px;margin-bottom:10px;display:flex;justify-content:space-between;gap:12px}.header h1{font-size:17px;margin:0}.header p{margin:2px 0 0;color:#527068}.meta{font-size:9px;text-align:right;color:#527068}.columns{columns:2 280px;column-gap:14px}.row{break-inside:avoid;border:1px solid #b9dfcc;border-radius:6px;padding:7px;margin:0 0 7px;display:grid;grid-template-columns:31% 69%;gap:6px}.term strong{display:block;font-size:10px}.term span{display:block;color:#617b73;font-size:8px;margin-top:3px}.source strong{display:block;font-size:9px}.source div{margin-top:2px;white-space:pre-wrap}.source small{display:block;margin-top:3px;color:#7a5a8e;font-size:7px}.footer{margin-top:10px;border-top:1px solid #b9dfcc;padding-top:6px;color:#527068;font-size:8px}@media print{.row{border-color:#ccc}.footer{position:fixed;bottom:0;left:0;right:0}}</style></head><body><header class="header"><div><h1>Psychiatry Mnemonic Reviewer</h1><p>Source-faithful mnemonic study sheet</p></div><div class="meta">${selected.map(n=>`Page ${n}`).join(' • ')}${state.study.category?`<br>${esc(state.study.category)}`:''}</div></header><main class="columns">${rows}</main><footer class="footer">${meta}</footer><script>window.onload=()=>setTimeout(()=>window.print(),250)<\/script></body></html>`);
-    w.document.close();
+    // Print from the current document instead of opening a popup. This is more
+    // reliable on Safari/iOS, where popup + document.write print windows can
+    // appear as a blank page or be blocked. The print stylesheet hides the app
+    // chrome and prints the already-rendered educator sheet.
+    if(state.view!=='study') studySheets();
+    document.documentElement.classList.add('printing-study-sheet');
+    const finish=()=>{
+      document.documentElement.classList.remove('printing-study-sheet');
+      window.removeEventListener('afterprint',finish);
+    };
+    window.addEventListener('afterprint',finish);
+    requestAnimationFrame(()=>setTimeout(()=>window.print(),120));
   }
 
   function about(){state.view='about';setActive('about');app.innerHTML=`<section class="panel about"><h1>About</h1><p><strong>Psychiatry Mnemonic Reviewer</strong> is an offline-first study interface built around the canonical source-faithful mnemonic database.</p><h3>Source policy</h3><p>The content layer preserves the wording, headings, expansions, page placement, and audit-status fields from the consolidated source database. The app does not clinically fact-check, silently correct, or supplement the source mnemonic text.</p><h3>Included features</h3><ul><li>241 source-faithful mnemonic entries across 5 source pages</li><li>Search and browse by source page and topic</li><li>Flashcards with Easy / Medium / Hard spaced repetition</li><li>♥ Hearted custom deck shared across flashcards and quiz</li><li>Due, new, hard, random, and all-card review sessions</li><li>Active-recall quiz modes with missed-question retry and Hearted questions</li><li>Educator two-column printable study sheets</li><li>Local progress dashboard and review statistics</li><li>Light/dark mode, responsive iPhone/iPad layout, and reduced-motion support</li><li>Offline-first PWA for GitHub Pages</li></ul><h3>Attribution</h3><p>App created by <strong>Isabella Navarro, MD</strong>.<br>Latest version <strong>October 2026</strong>.<br><strong>isaymotion@gmail.com</strong></p><button class="btn secondary" data-action="home">← Home</button></section>${footer()}`}
